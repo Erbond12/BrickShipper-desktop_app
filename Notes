@@ -1,0 +1,34 @@
+Installing JavaFX:
+	https://www.youtube.com/watch?v=_7OM-cMYWbQ  + Comments
+
+	If you use Maven you can't use Java 25. You have to use Java 21, as the Java JVM runtime is apparently set to 21 as well?
+	-> But with Java 21 it could run. The only problem is that reflection does not work quite right. 
+	   The default code where it takes css styling from application.css can not find the file. 
+
+Java manager (SDKMAN):
+	https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching
+	https://sdkman.io/install/
+	Java JRE Sources: https://stackoverflow.com/questions/58250782/which-free-version-of-java-can-i-use-for-production-environments-and-or-commerci
+	
+Button with event handling:
+	https://www.baeldung.com/javafx-button-eventhandler
+	https://stackoverflow.com/questions/40757911/javafx-adding-actionlistener-to-button
+	
+javafx:
+javafx = 23
+java (maven-compiler-plugin.release) = 21 -> build works
+
+
+CSS-Styling:
+	The css file is "not" searched for in the project file structure. During compilation we produce a target where we have save all the classes.
+	If you have the application.css in the resource folder you need a preceding "/" i.e. "/application.css".
+	If you have the .css file in a subfolder of the resource folder, you need to do the same but with that subfolder: "/subfolder_name/aplication.css".
+	If you have the .css file in the same package from which you are calling it from, you must not use a preceding "/": application.css
+	If you have the .css file in different package there has to be a preceding "/": "/tester/application4.css"
+	
+	With this command you can visualize what path is taken and what is meant with "not" searched in project file structure:
+	(We left the .toExternalForm() out, as this would throw an exception if the result is null)
+		System.out.println(getClass().getResource(""));
+		
+	To load the .css file use
+		scene.getStylesheets().add(getClass().getResource("/tester/application4.css").toExternalForm());
