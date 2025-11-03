@@ -6,13 +6,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DummyDBConnection {
+public class Repository {
+	private Connection conn; 
 	
-	public static void main(String[] args) {
-		System.out.println("hello World");
-		try (Connection conn  = DriverManager.getConnection("jdbc:sqlite:/Users/erikos/eclipse-configs/BrickShipper-Desktop_app/BrickShipper/src/main/resources/test.db")) {
+	
+	public Repository(String repoName) {
+		String jdbc_url = "jdbc:sqlite:" + repoName;
+		
+		try {
+			conn = DriverManager.getConnection(jdbc_url);
+		} catch(SQLException e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		// have the jdbc url as an extra variable
+		// does the path to the database file have to be absolute? or can it be relative?		
+		try (Connection conn  = DriverManager.getConnection("jdbc:sqlite:/Users/erikos/eclipse-configs/BrickShipper-Desktop_app/BrickShipper/src/main/resources/" + repoName)) {
             if (conn != null) {
-        		System.out.println("hello Conn");
                 System.out.println("Connected to SQLite!");
 
                 Statement stmt = conn.createStatement();
@@ -32,16 +44,13 @@ public class DummyDBConnection {
 
                 rs.close();
                 stmt.close();
-
-        		System.out.println("ciao conn");
             }
-    		System.out.println("no conn");
 			
 		} catch (SQLException e) {
     		System.out.println(e);
 			
 		}
-		System.out.println("none");
 	}
-
+	
+	// getAllUsers ...
 }

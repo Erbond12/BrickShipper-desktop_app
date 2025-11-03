@@ -36,20 +36,6 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
     	try {	
-			//Button
-			buttonText = "Click Me";
-			Button button = new Button(buttonText);
-			counter = 0;
-			
-			button.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
-					counter++;
-					button.setText("You clicked me? counter: " + counter);
-					event.consume();
-				}
-			});
-			
 			// Table
 			List<TableRowDataDummy> content = List.of(new TableRowDataDummy("John", 24, 75), new TableRowDataDummy("Smith", 12, 22));
 			ObservableList<TableRowDataDummy> contentTeam = FXCollections.observableArrayList(content);
@@ -64,25 +50,47 @@ public class App extends Application {
 			
 			table.getColumns().setAll(nameCol, ageCol, weightCol);
 			
+			// Scenes
+			BorderPane root1 = new BorderPane(table);
+			Scene scene1 = new Scene(root1,400,400);
+			
+
+			//Button
+			buttonText = "Click Me";
+			Button button = new Button(buttonText);
+			counter = 0;
+			
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					counter++;
+					button.setText("You clicked me? counter: " + counter);
+					primaryStage.setScene(scene1);
+					event.consume();
+				}
+			});
+			
 			// Layout tests
 			Label textToDisplay0 = new Label("Hello World from JavaFX");
 			Label textToDisplay1 = new Label("Hello World from JavaFX");
 			Label textToDisplay2 = new Label("Hello World from JavaFX");
 			textToDisplay2.setTextFill(Color.WHITE);
 			StackPane hbox = new StackPane();
-			hbox.getChildren().addAll(new Rectangle(100,100,Color.BLUE), textToDisplay2);
-			BorderPane root = new BorderPane(table);
+			hbox.getChildren().addAll(new Rectangle(100,100,Color.BLUE), textToDisplay2, button);
+			BorderPane root2 = new BorderPane(hbox);
 			
 			
 			// Scenes
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("/css/dummy.css").toExternalForm());
-			primaryStage.setScene(scene);
+			Scene scene2 = new Scene(root2,400,400);
+			scene2.getStylesheets().add(getClass().getResource("/css/dummy.css").toExternalForm());
+			
+			// Stage
+			primaryStage.setScene(scene2);
 			primaryStage.show();
 		} 
     	catch(Exception e) {
 			e.printStackTrace();
-		}
+		} // TODO: Move exception handling to a higher level for handling? 
     }
 
     public static void main(String[] args) {
