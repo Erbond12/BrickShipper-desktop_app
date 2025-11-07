@@ -32,3 +32,7 @@ CSS-Styling:
 		
 	To load the .css file use
 		scene.getStylesheets().add(getClass().getResource("/tester/application4.css").toExternalForm());
+
+Documentation in eclipse:
+	To quickly reference the documentation you can use right click -> type hierarchy and have all the subclasses of that marked class.
+	

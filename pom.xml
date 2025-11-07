@@ -48,7 +48,7 @@
                         <id>default-cli</id>
                         <configuration>
                         	<!-- should be only BrickShipper.App  -->
-                            <mainClass>BrickShipper.AppFXML</mainClass>
+                            <mainClass>BrickShipper.Main</mainClass>
                         </configuration>
                     </execution>
                 </executions>

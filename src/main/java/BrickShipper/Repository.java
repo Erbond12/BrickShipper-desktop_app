@@ -1,5 +1,6 @@
 package BrickShipper;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,19 +12,25 @@ public class Repository {
 	
 	
 	public Repository(String repoName) {
-		String jdbc_url = "jdbc:sqlite:" + repoName;
+//		
+//		String jdbc_url = "jdbc:sqlite:" + repoName;
 		
-		try {
-			conn = DriverManager.getConnection(jdbc_url);
-		} catch(SQLException e) {
-			System.out.println(e);
-		}
+//		try {
+//			conn = DriverManager.getConnection(jdbc_url);
+//		} catch(SQLException e) {
+//			System.out.println(e);
+//		}
 		
 		
 		
 		// have the jdbc url as an extra variable
 		// does the path to the database file have to be absolute? or can it be relative?		
-		try (Connection conn  = DriverManager.getConnection("jdbc:sqlite:/Users/erikos/eclipse-configs/BrickShipper-Desktop_app/BrickShipper/src/main/resources/" + repoName)) {
+		
+		System.out.println(System.getProperty("user.dir"));
+		new File("data").mkdirs(); //TODO: Check prior if the folder exists and create it only if not. (Try catch?)
+		
+		String path = System.getProperty("user.dir") + "/data/" + repoName;
+		try (Connection conn  = DriverManager.getConnection("jdbc:sqlite:" + path)) {
             if (conn != null) {
                 System.out.println("Connected to SQLite!");
 

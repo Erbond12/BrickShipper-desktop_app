@@ -16,7 +16,7 @@ public class Main {
 		AppContext.init(service);
 		
 		// Start the UI
-		Application.launch(App.class, args);
+		Application.launch(AppFXML.class, args);
 		
 	}
 }
