@@ -8,10 +8,23 @@ import javafx.scene.Parent;
 
 public class LayoutController {
 	
-    @FXML
+	@FXML
+	private HeaderController headerController;
+
+	@FXML
 	private Group centerContent;
+    
 
 	public void initialize() throws IOException  {
+		// maybe switch to observabel BooleanProperty or ObjectProperty<Event>? -> on try catch 
+		// This registers the action in the header controller, so that on click the center content switch can be triggered within the layout.
+		headerController.setHomeButtonListener( () -> {
+			try {
+				setContent("primary");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 		setContent("secondary");
 	}
 
