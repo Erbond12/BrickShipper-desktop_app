@@ -36,3 +36,19 @@ CSS-Styling:
 Documentation in eclipse:
 	To quickly reference the documentation you can use right click -> type hierarchy and have all the subclasses of that marked class.
 	
+JavaFX nested Controller and references:
+	If you want to nest fxml files, then use fx:include and with the fx:id on it we can also get a reference to the nested (sub-) controller.
+	The name of the variable has to be exactly: <fx:id> + "Controller"  (it is case sensitiv).
+	i.e:
+		<VBox ...>
+			<fx:include fx:id="nested" fx:id="sub.fxml" />
+		</VBox>
+		
+		MainController.java ->
+		 ...
+		 @FXML 
+		 private SubController nestedController;
+		
+		
+		
+			

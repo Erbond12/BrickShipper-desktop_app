@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 
 public class LayoutController {
 	
+	// Set the name of the controller like this: <fx:id> + "Controller". Here the fx:id is header. It is case-sensitiv
 	@FXML
 	private HeaderController headerController;
 
