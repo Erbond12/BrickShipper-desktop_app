@@ -32,6 +32,9 @@ CSS-Styling:
 		
 	To load the .css file use
 		scene.getStylesheets().add(getClass().getResource("/tester/application4.css").toExternalForm());
+		
+	This can be used anywhere and not only on the scene. You can do this on almost any object.
+	source: https://www.youtube.com/watch?v=o-lAsVuskKI
 
 Documentation in eclipse:
 	To quickly reference the documentation you can use right click -> type hierarchy and have all the subclasses of that marked class.
@@ -48,7 +51,11 @@ JavaFX nested Controller and references:
 		 ...
 		 @FXML 
 		 private SubController nestedController;
+		 
+	https://www.reddit.com/r/JavaFX/comments/e52yn1/nested_controller_tutorials/
 		
-		
+Data loading/ saving BL:
+	Just fetch on button click the BL orders and check if they are all in the DB.
+	-> give field to enter date
 		
 			

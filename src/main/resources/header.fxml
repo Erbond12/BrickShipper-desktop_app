@@ -10,7 +10,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx" 
 	        xmlns:fx="http://javafx.com/fxml" 
-	        fx:controller="BrickShipper.HeaderController">
+	        fx:controller="BrickShipper.HeaderController"
+	        fx:id="headerPane" >
 	<center>
 	    <HBox alignment="CENTER_LEFT" spacing="20.0" >
 	        <Button fx:id="homeButton" text="Home" onAction="#onHomeButtonClick" />

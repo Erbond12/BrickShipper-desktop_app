@@ -16,28 +16,24 @@ public class LayoutController {
 	private Group centerContent;
     
 
-	public void initialize() throws IOException  {
-		// maybe switch to observabel BooleanProperty or ObjectProperty<Event>? -> on try catch 
-		// This registers the action in the header controller, so that on click the center content switch can be triggered within the layout.
-		headerController.setHomeButtonListener( () -> {
-			try {
-				setContent("primary");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+	public void initialize() throws IOException  { 
+		
 		setContent("secondary");
+		
+		// Register the content-switch action in the header controller, to trigger the switch in the layout if, the button is clicked
+		headerController.setOnViewSwitch( (String fxmlPath) -> setContent(fxmlPath) );
+		
 	}
 
-    private void setContent(String fxmlFileName) throws IOException {
-    	Parent content = FXMLLoader.load(getClass().getResource("/" + fxmlFileName + ".fxml"));
+    private void setContent(String fxmlFileName) throws IOException{
+    	// load new content
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/" + fxmlFileName + ".fxml"));
+    	Parent content = fxmlLoader.load();
         centerContent.getChildren().setAll(content);
-    }
-
-	
-    @FXML
-    private void switchToSecondary() throws IOException {
-//    	AppFXML.setRoot("secondary");
-    	setContent("primary");
+        
+        // inject/ register setContent action
+        SubViewRequestHandler homePageController = fxmlLoader.getController();
+        homePageController.setOnViewSwitch( (String fxmlPath) -> setContent(fxmlPath) );
     }
 }

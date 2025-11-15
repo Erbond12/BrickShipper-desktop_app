@@ -22,8 +22,8 @@ public class AppFXML extends Application {
         scene = new Scene(root, 640, 480);
         
         // set css styling
-        String css = getCSS("/css/dummy.css");
-        scene.getStylesheets().add(css);
+        // String css = getCSS("/css/dummy.css");
+        //scene.getStylesheets().add(css);
         
         // set scene
         stage.setScene(scene);
