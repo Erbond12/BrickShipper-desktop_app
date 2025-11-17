@@ -40,8 +40,10 @@ public class App extends Application {
 			// Table
 			List<TableRowDataDummy> content = List.of(new TableRowDataDummy("John", 24, 75), new TableRowDataDummy("Smith", 12, 22));
 			ObservableList<TableRowDataDummy> contentTeam = FXCollections.observableArrayList(content);
+			
 			TableView<TableRowDataDummy> table = new TableView<>(contentTeam);
 			//table.setItems(contentTeam);
+			
 			TableColumn<TableRowDataDummy, String> nameCol = new TableColumn<>("Name");
 			nameCol.setCellValueFactory(new PropertyValueFactory<>(content.get(0).nameProperty().getName()));
 			TableColumn<TableRowDataDummy, String> ageCol = new TableColumn<>("Age");

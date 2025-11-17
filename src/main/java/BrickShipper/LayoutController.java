@@ -26,8 +26,7 @@ public class LayoutController {
 	}
 
     private void setContent(String fxmlFileName) throws IOException{
-    	// load new content
-    	
+    	// load new content    	
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/" + fxmlFileName + ".fxml"));
     	Parent content = fxmlLoader.load();
         centerContent.getChildren().setAll(content);

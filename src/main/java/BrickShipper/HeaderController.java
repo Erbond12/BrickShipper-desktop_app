@@ -27,12 +27,12 @@ public class HeaderController implements SubViewRequestHandler{
 	
 	@FXML
 	private void onHomeButtonClick() {
-		System.out.println("hello world");
 		
 		if (homeButtonConsumer != null) {
 			try {
 				homeButtonConsumer.accept(FilePathsEnum.HOMEPAGE.getPath());;							
 			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

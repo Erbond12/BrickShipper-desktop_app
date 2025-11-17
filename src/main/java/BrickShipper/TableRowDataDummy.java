@@ -39,13 +39,6 @@ public class TableRowDataDummy {
 	public String getName() {
 		return nameProperty().get();
 	}
-
-	public StringProperty nameProperty() {
-		if (name == null) {
-			name = new SimpleStringProperty(this, "name");
-		}
-		return name;
-	}
 	
 	public IntegerProperty ageProperty() {
 		if(age == null) {
@@ -59,6 +52,13 @@ public class TableRowDataDummy {
 			weight = new SimpleIntegerProperty(this, "weight");
 		}
 		return weight;
+	}
+	
+	public StringProperty nameProperty() {
+		if (name == null) {
+			name = new SimpleStringProperty(this, "name");
+		}
+		return name;
 	}
 
 }

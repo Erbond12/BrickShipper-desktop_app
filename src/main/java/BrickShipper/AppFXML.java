@@ -17,13 +17,13 @@ public class AppFXML extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-    	// load initial fxml ui
-    	Parent root = loadFXML("layout");
+    	// Load initial FXML UI
+    	Parent root = loadFXML(FilePathsEnum.LAYOUT.getPath());
         scene = new Scene(root, 640, 480);
         
-        // set css styling
-        // String css = getCSS("/css/dummy.css");
-        //scene.getStylesheets().add(css);
+        // Set CSS styling
+//        String css = getCSS("/css/dummy.css");
+//        scene.getStylesheets().add(css);
         
         // set scene
         stage.setScene(scene);
@@ -39,12 +39,8 @@ public class AppFXML extends Application {
         return fxmlLoader.load();
     }
     
-    private String getCSS(String url) {
-    	return this.getClass().getResource(url).toExternalForm();
-    }
-
-    // public static void main(String[] args) {
-    //     launch();
-    // }
+//    private String getCSS(String url) {
+//    	return this.getClass().getResource(url).toExternalForm();
+//    }
 
 }
